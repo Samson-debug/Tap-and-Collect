@@ -19,9 +19,6 @@ public class DragInputModule : MonoBehaviour
             
             return instance;
         }
-        private set{
-            instance = value;
-        }
     }
 
     public event Action<Vector2> OnDragStart;
@@ -34,13 +31,13 @@ public class DragInputModule : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (instance != null && instance != this)
         {
             Destroy(gameObject);
             return;
         }
         
-        Instance = this;
+        instance = this;
         DontDestroyOnLoad(gameObject);
 
         //initialize actions 
