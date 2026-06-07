@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3332660353330415384
+--- !u!1001 &1766018383924673849
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -11,26 +11,26 @@ PrefabInstance:
     - target: {fileID: 1766503458220869867, guid: 7e0fd9cad748cb047b76d39c88c81b50, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+      objectReference: {fileID: 21300000, guid: bf4f547d6b5e2b840936b801c5e890d6, type: 3}
     - target: {fileID: 1766503458220869867, guid: 7e0fd9cad748cb047b76d39c88c81b50, type: 3}
       propertyPath: m_Color.b
-      value: 0.5083859
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1766503458220869867, guid: 7e0fd9cad748cb047b76d39c88c81b50, type: 3}
       propertyPath: m_Color.g
-      value: 0.9372549
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1766503458220869867, guid: 7e0fd9cad748cb047b76d39c88c81b50, type: 3}
       propertyPath: m_Color.r
-      value: 0.40784308
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1928674291575393679, guid: 7e0fd9cad748cb047b76d39c88c81b50, type: 3}
+      propertyPath: behaviorEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: e55dd478a09d7d048b91bae0b7ed09e5, type: 2}
     - target: {fileID: 5166257667636992499, guid: 7e0fd9cad748cb047b76d39c88c81b50, type: 3}
       propertyPath: m_Name
-      value: Triangle
-      objectReference: {fileID: 0}
-    - target: {fileID: 8076948006782549154, guid: 7e0fd9cad748cb047b76d39c88c81b50, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.03
+      value: Score Ball
       objectReference: {fileID: 0}
     - target: {fileID: 9052152002984308303, guid: 7e0fd9cad748cb047b76d39c88c81b50, type: 3}
       propertyPath: m_LocalPosition.x

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8076948006782549154}
   - component: {fileID: 1360110314947689817}
   - component: {fileID: 1928674291575393679}
+  - component: {fileID: 1050008800651966995}
   m_Layer: 0
   m_Name: Falling Object
   m_TagString: Untagged
@@ -129,7 +130,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.49999997
+  m_Radius: 0.46
 --- !u!50 &1360110314947689817
 Rigidbody2D:
   serializedVersion: 5
@@ -170,3 +171,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectibleItem
   behaviorEvent: {fileID: 0}
+--- !u!114 &1050008800651966995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5166257667636992499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 530813b4d4266724199191a6160cc815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FallingMovement
+  fallSpeed: 5

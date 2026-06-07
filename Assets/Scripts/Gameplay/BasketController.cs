@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[DefaultExecutionOrder(1000)]
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Collider2D))]
 public class BasketController : MonoBehaviour
@@ -10,11 +11,18 @@ public class BasketController : MonoBehaviour
     private float maxX;
     private float offsetX;
 
+    [Header("Events")]
+    [SerializeField] private VoidEventChannelSO gameStartedEvent;
+    [SerializeField] private VoidEventChannelSO gameOverEvent;
+    private bool canMove = false;
+
     private Camera cam;
+    private Collider2D coll;
 
     private void Awake()
     {
         cam = Camera.main;
+        coll = GetComponent<Collider2D>();
     }
 
     private void Start()
@@ -29,6 +37,9 @@ public class BasketController : MonoBehaviour
             DragInputModule.Instance.OnDragStart += OnDragStart;
             DragInputModule.Instance.OnDragMove += OnDragMove;
         }
+        
+        if (gameStartedEvent != null) gameStartedEvent.OnEventRaised += EnableMovement;
+        if (gameOverEvent != null) gameOverEvent.OnEventRaised += DisableMovement;
     }
 
     private void OnDisable()
@@ -38,9 +49,24 @@ public class BasketController : MonoBehaviour
             DragInputModule.Instance.OnDragStart -= OnDragStart;
             DragInputModule.Instance.OnDragMove -= OnDragMove;
         }
+        
+        if (gameStartedEvent != null) gameStartedEvent.OnEventRaised -= EnableMovement;
+        if (gameOverEvent != null) gameOverEvent.OnEventRaised -= DisableMovement;
     }
 
-    private void CalculateBounds()
+    private void EnableMovement()
+    { 
+        canMove = true;
+        coll.enabled = true;
+    }
+    
+    private void DisableMovement()
+    {
+        canMove = false;
+        coll.enabled = false;
+    }
+
+    public void CalculateBounds()
     {
         if (cam == null) return;
         
@@ -55,6 +81,8 @@ public class BasketController : MonoBehaviour
 
     private void OnDragStart(Vector2 screenPosition)
     {
+        if (!canMove) return;
+
         Vector3 touchWorldPos = cam.ScreenToWorldPoint(screenPosition);
         touchWorldPos.z = transform.position.z;
 
@@ -63,6 +91,8 @@ public class BasketController : MonoBehaviour
 
     private void OnDragMove(Vector2 screenPosition)
     {
+        if (!canMove) return;
+
         Vector3 touchWorldPos = cam.ScreenToWorldPoint(screenPosition);
         
         float targetX = touchWorldPos.x + offsetX;

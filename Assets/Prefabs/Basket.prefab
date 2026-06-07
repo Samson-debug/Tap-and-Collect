@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7118795212877936491}
   - component: {fileID: 8112613450834519032}
   - component: {fileID: 4875570374853003805}
+  - component: {fileID: 6298556915492634886}
   m_Layer: 0
   m_Name: Basket
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -3.5, z: 0}
-  m_LocalScale: {x: 100, y: 70, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -81,9 +82,9 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 127279d577f25ac4ea17dae3782e5074, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bd2fb4e1df03cd743a2d5c02d6c8048e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -127,17 +128,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.22}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.01, y: 0.01}
+    oldSize: {x: 1.024, y: 1.024}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.01, y: 0.01}
+  m_Size: {x: 0.95, y: 0.4}
   m_EdgeRadius: 0
 --- !u!114 &4875570374853003805
 MonoBehaviour:
@@ -152,3 +153,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BasketController
   padding: 0.3
+  gameStartedEvent: {fileID: 11400000, guid: 7301149a62323b44f83dba982345c9f5, type: 2}
+  gameOverEvent: {fileID: 11400000, guid: 029a7d581a12bb945aa9abe289d30f20, type: 2}
+--- !u!114 &6298556915492634886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167254103206054670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c08676702affd9439adf0ba82f1ca1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerEffectController
+  sizeIncreaseEvent: {fileID: 11400000, guid: d054e2ab954217846bc80ab968e76373, type: 2}
+  sizeMultiplier: 1.5
+  sizeIncreaseDuration: 5

@@ -2,24 +2,10 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[DefaultExecutionOrder(500)]
 public class DragInputModule : MonoBehaviour
 {
-    private static DragInputModule instance;
-    public static DragInputModule Instance
-    {
-        get{
-            if (instance == null){
-                instance = FindFirstObjectByType<DragInputModule>();
-            }
-
-            if (instance == null){
-                GameObject go = new GameObject("[RuntimeOnly]DragInputModule");
-                instance = go.AddComponent<DragInputModule>();
-            }
-            
-            return instance;
-        }
-    }
+    public static DragInputModule Instance;
 
     public event Action<Vector2> OnDragStart;
     public event Action<Vector2> OnDragMove;
@@ -31,13 +17,13 @@ public class DragInputModule : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null && instance != this)
+        if(Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
         
-        instance = this;
+        Instance = this;
         DontDestroyOnLoad(gameObject);
 
         //initialize actions 
@@ -51,14 +37,14 @@ public class DragInputModule : MonoBehaviour
 
     private void OnEnable()
     {
-        pressAction.Enable();
-        positionAction.Enable();
+        pressAction?.Enable();
+        positionAction?.Enable();
     }
 
     private void OnDisable()
     {
-        pressAction.Disable();
-        positionAction.Disable();
+        pressAction?.Disable();
+        positionAction?.Disable();
     }
 
     private void OnDestroy()

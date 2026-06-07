@@ -1,10 +1,13 @@
 using UnityEngine;
+using UnityEngine.Pool;
 
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class CollectibleItem : MonoBehaviour
 {
     [SerializeField] private VoidEventChannelSO behaviorEvent;
+
+    public IObjectPool<CollectibleItem> Pool { get; set; }
 
     private void Awake()
     {
@@ -25,15 +28,23 @@ public class CollectibleItem : MonoBehaviour
         Debug.Log($"[CollectibleItem] OnTriggerEnter2D {name}", this);
         BasketController basket = collision.GetComponent<BasketController>();
 
-        if (basket == null) return;
-        
-        if (behaviorEvent != null){
-            behaviorEvent.RaiseEvent();
+        if (basket != null){
+
+            if (behaviorEvent != null){
+                behaviorEvent.RaiseEvent();
+            }
+            else{
+                Debug.LogWarning($"No Behaviour event is assigned in {name}!", this);
+            }
         }
-        else{
-            Debug.LogWarning($"No Behaviour event is assigned in {name}!", this);
-        }
         
-        Destroy(gameObject);
+        if (Pool != null)
+        {
+            Pool.Release(this);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }
